@@ -1,28 +1,27 @@
 abstract class Parent {
-    private String Name;
-
-    public Parent() {
-        System.out.println("Parent:constructor");
-    }
-
-    public Parent(String name) {
-        Name = name;
-        System.out.println("Parent:name-constructor");
-    }
+    private String name;
 
     static {
         System.out.println("Parent:static 1");
-    }
-
-    static {
-        System.out.println("Parent:static 2");
     }
 
     {
         System.out.println("Parent:instance 1");
     }
 
+    static {
+        System.out.println("Parent:static 2");
+    }
+
+    public Parent() {
+        System.out.println("Parent:constructor");
+    }
+
     {
         System.out.println("Parent:instance 2");
+    }
+
+    public Parent(String name) {
+        System.out.println("Parent:name-constructor");
     }
 }
