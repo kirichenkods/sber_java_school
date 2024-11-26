@@ -1,4 +1,4 @@
-package ru.sbt.generics.task1;
+package task1;
 
 import java.util.HashMap;
 import java.util.Map;

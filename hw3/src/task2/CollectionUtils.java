@@ -1,4 +1,4 @@
-package ru.sbt.generics.task2;
+package task2;
 
 import java.util.*;
 import java.util.stream.Collectors;

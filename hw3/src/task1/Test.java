@@ -1,4 +1,4 @@
-package ru.sbt.generics.task1;
+package task1;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,7 +18,7 @@ public class Test {
         System.out.println("getCount(5): " + map.getCount(5));
 
         System.out.println("map before remove 6: " + map.toMap());
-        map.remove(6);
+        System.out.println(map.remove(5));
         System.out.println("map after remove 6: " + map.toMap());
 
         System.out.println("size: " + map.size());
