@@ -56,13 +56,13 @@ public class TerminalImpl implements Terminal {
         //каждый метод в case возвращает команду-состояние
         while (!cmd.equals(Commands.EXIT)) {
             switch (cmd) {
-                case GET_PIN -> cmd = getResultCheckPin();
-                case ACCESS -> cmd = getResultMenuAccess();
-                case BLOCK -> cmd = getResultCheckBlock();
-                case CHECK_ACCOUNT -> cmd = getResultBeforeCheckAccount();
-                case WITHDRAW_MONEY -> cmd = getResultBeforeWithdrawMoney();
-                case PUT_MONEY -> cmd = getResultBeforePutMoney();
-                case MAIN_MENU -> cmd = getResultFromMainMenu();
+                case GET_PIN -> cmd = getStatusAfterCheckPin();
+                case ACCESS -> cmd = getStatusFromMenuAccess();
+                case BLOCK -> cmd = getStatusAfterCheckBlock();
+                case CHECK_ACCOUNT -> cmd = getStatusAfterCheckAccount();
+                case WITHDRAW_MONEY -> cmd = getStatusAfterWithdrawMoney();
+                case PUT_MONEY -> cmd = getStatusAfterPutMoney();
+                case MAIN_MENU -> cmd = getStatusFromMainMenu();
             }
         }
     }
@@ -71,7 +71,7 @@ public class TerminalImpl implements Terminal {
      * пополнение счета
      * возвращает в меню доступа к счету
      */
-    private Commands getResultBeforePutMoney() {
+    private Commands getStatusAfterPutMoney() {
         String message = "введите сумму для пополнения счета\n" +
                 "Сумма должна быть кратна 100";
         userInterface.showMessage(message);
@@ -86,7 +86,7 @@ public class TerminalImpl implements Terminal {
      * снятие наличных
      * возвращает в меню доступа к счету
      */
-    private Commands getResultBeforeWithdrawMoney() {
+    private Commands getStatusAfterWithdrawMoney() {
         String message = "введите сумму для снятия\n" +
                 "Сумма должна быть кратна 100";
         userInterface.showMessage(message);
@@ -106,7 +106,7 @@ public class TerminalImpl implements Terminal {
      * PUT_MONEY - пополнить счет
      * MAIN_MENU - если пользователь ввел неверный код
      */
-    private Commands getResultMenuAccess() {
+    private Commands getStatusFromMenuAccess() {
         String message =
                 "Введите " + Commands.CHECK_ACCOUNT.getCmd() + " для проверки баланса\n" +
                         "Введите " + Commands.WITHDRAW_MONEY.getCmd() + " для снятия наличных\n" +
@@ -131,7 +131,7 @@ public class TerminalImpl implements Terminal {
      *
      * @return Commands.ACCESS
      */
-    private Commands getResultBeforeCheckAccount() {
+    private Commands getStatusAfterCheckAccount() {
         checkAccount();
 
         return Commands.ACCESS;
@@ -145,7 +145,7 @@ public class TerminalImpl implements Terminal {
      * GET_PIN - получение пин-кода
      * MAIN_MENU если пользователь вводит неправильный код
      */
-    private Commands getResultFromMainMenu() {
+    private Commands getStatusFromMainMenu() {
         String welcomeMessage =
                 "Для ввода пин-кода введите " + Commands.GET_PIN.getCmd() + "\n" +
                         "Для выхода введите " + Commands.EXIT.getCmd();
@@ -168,7 +168,7 @@ public class TerminalImpl implements Terminal {
      *
      * @return BLOCK - терминал заблокирован, MAIN_MENU - возврат в главное меню
      */
-    private Commands getResultCheckBlock() {
+    private Commands getStatusAfterCheckBlock() {
         if (pinValidator.isBlock()) {
             return Commands.BLOCK;
         }
@@ -183,7 +183,7 @@ public class TerminalImpl implements Terminal {
      * ACCESS - если пин введен верно
      * BLOCK - терминал заблокирован на определенное время
      */
-    private Commands getResultCheckPin() {
+    private Commands getStatusAfterCheckPin() {
         if (pinValidator.isPinCorrect()) {
             return Commands.ACCESS;
         }
