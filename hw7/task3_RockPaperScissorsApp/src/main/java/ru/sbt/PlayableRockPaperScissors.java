@@ -1,2 +1,5 @@
-package ru.sbt;public interface PlayableRockPaperScissors {
+package ru.sbt;
+
+public interface PlayableRockPaperScissors {
+    RockPaperScissorsEnum play();
 }

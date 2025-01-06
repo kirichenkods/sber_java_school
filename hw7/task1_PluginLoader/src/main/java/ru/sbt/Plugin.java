@@ -1,4 +1,4 @@
-package ru.sber;
+package ru.sbt;
 
 public interface Plugin {
     //methods doesn't matter

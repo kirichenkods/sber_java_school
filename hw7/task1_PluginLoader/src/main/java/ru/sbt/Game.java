@@ -1,4 +1,4 @@
-package ru.sber;
+package ru.sbt;
 
 public class Game {
     public static void main(String[] args) {
@@ -8,9 +8,9 @@ public class Game {
         String pluginClassName = "ru.sbt.PluginImpl";
 
         Plugin pluginA = manager.load("pluginA", pluginClassName);
-        pluginA.doUsefull();
+        Plugin pluginB = manager.load("pluginB", pluginClassName);
 
-//        Plugin pluginB = manager.load("pluginB", pluginClassName);
-//        pluginB.doUsefull();
+        pluginA.doUsefull();
+        pluginB.doUsefull();
     }
 }
