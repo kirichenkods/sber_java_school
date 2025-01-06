@@ -7,7 +7,8 @@ import java.util.Random;
 
 @Getter
 @Setter
-public class PlayableRockPaperScissorsImpl implements PlayableRockPaperScissors {    private int countWins;
+public class PlayableRockPaperScissorsImpl implements PlayableRockPaperScissors {
+    private int countWins;
     private String name;
     @Override
     /**
