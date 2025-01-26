@@ -31,7 +31,7 @@ public class PinValidatorImpl implements PinValidator {
     }
 
     /**
-     * получает пин-код от пользователя
+     * Получает пин-код от пользователя
      * @return String pin-code
      */
     private String getPinCode() {
@@ -50,7 +50,7 @@ public class PinValidatorImpl implements PinValidator {
     }
 
     /**
-     * проверка на блокировку терминала
+     * Проверка на блокировку терминала
      */
     @Override
     public boolean isBlock() {
@@ -64,7 +64,7 @@ public class PinValidatorImpl implements PinValidator {
     }
 
     /**
-     * проверка блокировки
+     * Проверка блокировки
      * блокирует терминал, если количество попыток исчерпано
      * разблокирует терминал, если время блокировки вышло
      */

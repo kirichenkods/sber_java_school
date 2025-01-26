@@ -27,7 +27,7 @@ public class TerminalServerImpl implements TerminalServer {
             throw new IncorrectMoneyInputException("Сумма должна быть кратна 100!");
         }
         if (money > account) {
-            throw new NotEnoughMoneyException("Недостачно средств!");
+            throw new NotEnoughMoneyException("Недостаточно средств!");
         }
         this.account = account - money;
     }

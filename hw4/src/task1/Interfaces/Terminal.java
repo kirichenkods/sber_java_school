@@ -2,24 +2,25 @@ package task1.Interfaces;
 
 public interface Terminal {
     /**
-     * проверка баланса
+     * Проверка баланса
      */
     void checkAccount();
 
     /**
-     * снять наличные
+     * Снять наличные
      * @param money
      */
     void withdrawMoney(double money);
 
     /**
-     * пополнить счет
+     *
+     * Пополнить счет
      * @param money
      */
     void putMoney(double money);
 
     /**
-     * метод запускающий работу терминала
+     * Метод запускающий работу терминала
      */
     void doWork();
 }

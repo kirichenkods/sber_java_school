@@ -47,7 +47,7 @@ public class TerminalImpl implements Terminal {
     }
 
     /**
-     * главный метод, в котором меняется состояние работы терминала
+     * Главный метод, в котором меняется состояние работы терминала
      */
     @Override
     public void doWork() {
@@ -68,7 +68,7 @@ public class TerminalImpl implements Terminal {
     }
 
     /**
-     * пополнение счета
+     * Пополнение счета
      * возвращает в меню доступа к счету
      */
     private Commands getStatusAfterPutMoney() {
@@ -83,7 +83,7 @@ public class TerminalImpl implements Terminal {
     }
 
     /**
-     * снятие наличных
+     * Снятие наличных
      * возвращает в меню доступа к счету
      */
     private Commands getStatusAfterWithdrawMoney() {
@@ -98,7 +98,7 @@ public class TerminalImpl implements Terminal {
     }
 
     /**
-     * выводит меню доступа к счету
+     * Выводит меню доступа к счету
      *
      * @return EXIT - выход
      * CHECK_ACCOUNT - проверка счета
@@ -126,7 +126,7 @@ public class TerminalImpl implements Terminal {
     }
 
     /**
-     * сообщяет пользователю состояние счета
+     * Сообщает пользователю состояние счета
      * возвращает состояние меню доступа к счету
      *
      * @return Commands.ACCESS
@@ -138,7 +138,7 @@ public class TerminalImpl implements Terminal {
     }
 
     /**
-     * главное меню
+     * Главное меню
      * возвращает
      *
      * @return EXIT - выход
@@ -163,7 +163,7 @@ public class TerminalImpl implements Terminal {
     }
 
     /**
-     * проверяет блокировку терминала
+     * Проверяет блокировку терминала,
      * возвращает состояние после проверки блокировки
      *
      * @return BLOCK - терминал заблокирован, MAIN_MENU - возврат в главное меню
@@ -176,7 +176,7 @@ public class TerminalImpl implements Terminal {
     }
 
     /**
-     * проверяет пин-код
+     * Проверяет пин-код,
      * возвращает состояние после проверки пин-код
      *
      * @return GET_PIN - если пин введен неверно, но количество попыток не закончилось
@@ -194,7 +194,7 @@ public class TerminalImpl implements Terminal {
     }
 
     /**
-     * проверка введенной команды
+     * Проверка введенной команды
      * команда должна соответствовать команде из списка, иначе выбросит исключение
      *
      * @param cmd      введенная команда
