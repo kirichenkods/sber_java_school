@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.com">
+<head>
+  <meta charset="UTF-8">
+  <title>Сборник рецептов</title>
+</head>
+<body>
+<h1>Сборник рецептов</h1>
+<h3>Поиск рецепта</h3>
+<form th:action="@{/find}" method="get">
+  <label>
+    <input type="text" name="recipeName" required th:value="${recipeName}">
+  </label>
+  <button type="submit">Найти рецепт</button>
+</form>
+<br>
+<form th:action="@{/create}" method="get">
+  <input type="submit" value="Добавить рецепт"/>
+</form>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Рецепты</title>
+</head>
+<body>
+<h1>Рецепты</h1>
+
+<form th:action="@{/start}" method="get">
+  <input type="submit" value="На главную"/>
+</form>
+<br>
+
+<h3 th:if="${recipes.isEmpty()}">Не найдено рецептов с таким названием</h3>
+
+<div th:each="recipe : ${recipes}">
+  <h3 th:text="${recipe.name}"></h3>
+  <h4>описание рецепта</h4>
+  <p th:text="${recipe.description}"></p>
+  <h4>список ингредиентов</h4>
+  <ul th:each="body : ${recipe.getRecipeBody()}">
+    <li th:text="${body.toString()}"></li>
+  </ul>
+
+  <div style="display: flex; gap: 10px;">
+    <form th:action="@{'/edit/' + ${recipe.getId()}}" method="post">
+      <button type="submit">Редактировать рецепт</button>
+    </form>
+
+    <form th:action="@{'/delete/' + ${recipe.name}}" method="get">
+      <button type="submit">Удалить рецепт</button>
+    </form>
+  </div>
+  <hr>
+</div>
+<br>
+
+<form th:if="!${recipes.isEmpty()}" th:action="@{/start}" method="get">
+  <input type="submit" value="На главную"/>
+</form>
+<br>
+</body>
+</html>

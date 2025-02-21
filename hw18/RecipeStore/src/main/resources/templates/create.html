@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.com">
+<head>
+  <meta charset="UTF-8">
+  <title>Добавление рецепта</title>
+</head>
+<body>
+<div>
+  <h1>Новый рецепт</h1>
+  <form th:action="@{/start}" method="get">
+    <input type="submit" value="На главную"/>
+  </form>
+  <br>
+  <form th:action="@{/create}" th:object="${recipe}" method="post">
+    <div>
+      <label for="name">Название</label>
+      <input type="text" id="name" th:field="*{name}" required />
+    </div>
+    <div>
+      <label for="description">Описание рецепта</label>
+      <br>
+      <textarea id="description" th:field="*{description}" rows="5" cols="40"></textarea>
+    </div>
+    <div id="ingredients-container">
+      <div class="ingredient-row">
+        <label for="ingredient-name-0">Название ингредиента</label>
+        <input type="text" id="ingredient-name-0" name="recipeBody[0].ingredient.name" required />
+        <label for="quantity-0">Количество</label>
+        <input type="number" id="quantity-0" name="recipeBody[0].quantity" min="0" step="any" required />
+        <label for="unitType-0">Единица измерения</label>
+        <select id="unitType-0" name="recipeBody[0].unit">
+          <option value="">Выберите единицу измерения</option>
+          <option th:each="unit : ${T(ru.sber.recipestore.model.UnitType).values()}"
+                  th:value="${unit}"
+                  th:text="${unit.getDisplayValue()}"></option>
+        </select>
+
+        <button type="button" onclick="removeIngredientRow(event)"
+                style="margin-left: 10px;">Удалить</button>
+      </div>
+    </div>
+    <br>
+    <div>
+      <button type="button" onclick="addIngredientRow(event)">Добавить ингредиент</button>
+    </div>
+    <br>
+    <button type="submit">Сохранить рецепт</button>
+  </form>
+</div>
+<script th:inline="javascript">
+let ingredientIndex = 1;
+function addIngredientRow(event) {
+  const container = document.getElementById('ingredients-container');
+  const row = document.createElement('div');
+  row.className = 'ingredient-row';
+  row.innerHTML = ` <label for="ingredient-name-${ingredientIndex}">Название ингредиента</label>
+                      <input type="text" id="ingredient-name-${ingredientIndex}" name="recipeBody[${ingredientIndex}].ingredient.name" required />
+                      <label for="quantity-${ingredientIndex}">Количество</label>
+                      <input type="number" id="quantity-${ingredientIndex}" name="recipeBody[${ingredientIndex}].quantity" min="0" step="any" required />
+                      <label for="unitType-${ingredientIndex}">Единица измерения</label>
+                      <select id="unitType-${ingredientIndex}" name="recipeBody[${ingredientIndex}].unit">
+                        <option value="">Выберите единицу измерения</option>
+                        <option value="GRAM">гр.</option>
+                        <option value="MILLILITER">мл.</option>
+                        <option value="PIECE">шт.</option>
+                      </select>
+                      <button type="button" onclick="removeIngredientRow(event)" style="margin-left: 10px;">Удалить</button> `;
+  container.appendChild(row);
+  ingredientIndex++;
+}
+function removeIngredientRow(event) {
+  const button = event.target;
+  button.closest('.ingredient-row').remove();
+}
+</script>
